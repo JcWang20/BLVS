@@ -1,0 +1,29 @@
+dataset: # Required.
+  type: semi
+  train:
+    data_root: ../../../../data/VOC2012
+    data_list: ../../../../data/splits/pascal/1464/labeled.txt
+    flip: True
+    GaussianBlur: False
+    # resize: [4032,3024]
+    resize: [864,576]
+    rand_resize: [0.5, 2.0]
+    # rand_rotation: [-10.0, 10.0]
+    crop:
+      type: rand
+      size: [576,384] # crop image with HxW size
+    mean: [123.675, 116.28, 103.53]
+    std: [58.395, 57.12, 57.375]
+    ignore_label: 50
+  val:
+    data_root: ../../../../data/VOC2012
+    data_list: ../../../../data/splits/pascal/val.txt
+    crop:
+      type: center
+      size: [576,384] # crop image with HxW size
+  batch_size: 2
+  n_sup: 1464
+  noise_std: 0.1
+  workers: 2
+  mean: [123.675, 116.28, 103.53]
+  std: [58.395, 57.12, 57.375]
